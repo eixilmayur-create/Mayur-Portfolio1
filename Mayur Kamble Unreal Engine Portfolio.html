@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Mayur Kamble — 3D Environment Artist & Unreal Engine Specialist. Portfolio featuring VR Safety Training Simulations and 3D Environments.">
+<title>Mayur Kamble — 3D Environment Artist & Unreal Engine Specialist</title>
+<style>
+:root {
+  --bg: #08090b;
+  --panel: #111318;
+  --panel-hover: #181a22;
+  --text: #f4f4f1;
+  --muted: #a4a7ad;
+  --line: #24272d;
+  --accent: #d8ff55;
+  --accent-red: #ff4d4d;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 1180px; margin: auto; padding: 0 28px; }
+
+/* Navigation */
+nav {
+  position: fixed;
+  z-index: 100;
+  top: 0; left: 0; right: 0;
+  background: rgba(8, 9, 11, 0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.nav {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo { font-weight: 800; letter-spacing: -.03em; font-size: 18px; }
+.logo span { color: var(--accent); }
+.links { display: flex; gap: 28px; color: #c5c7cb; font-size: 14px; align-items: center; }
+.links a:hover { color: #fff; }
+.links a.btn-nav {
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+}
+
+/* Hero Section */
+.hero {
+  min-height: 92vh;
+  padding-top: 130px;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 55px;
+  align-items: center;
+}
+.eyebrow {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: 12px;
+  font-weight: 700;
+}
+.hero h1 {
+  font-size: clamp(48px, 7vw, 92px);
+  line-height: .95;
+  letter-spacing: -.06em;
+  margin: 18px 0 26px;
+}
+.hero h1 em { font-style: normal; color: #777b84; }
+.hero p { max-width: 620px; color: var(--muted); font-size: 18px; line-height: 1.6; }
+.actions { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+.btn {
+  padding: 13px 22px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn.primary { background: var(--accent); color: #10120b; border-color: var(--accent); }
+.btn.primary:hover { opacity: 0.9; transform: translateY(-2px); }
+.btn:hover { border-color: #666; }
+
+.hero-art {
+  min-height: 520px;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  position: relative;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+}
+.hero-art video, .hero-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.overlay {
+  position: absolute;
+  inset: auto 22px 22px;
+  background: rgba(7, 8, 10, 0.82);
+  backdrop-filter: blur(14px);
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  z-index: 2;
+}
+.overlay strong { display: block; font-size: 15px; }
+.overlay small { color: #9fa3aa; font-size: 12px; }
+
+/* Sections */
+section { padding: 100px 0; }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 48px;
+}
+.section-head h2 { font-size: clamp(32px, 5vw, 48px); letter-spacing: -.055em; margin: 8px 0 0; line-height: 1.05; }
+.section-head p { color: var(--muted); max-width: 440px; font-size: 16px; margin: 0; }
+
+/* Featured VR Project Highlight Section */
+.featured-project {
+  background: var(--panel);
+  border: 1px solid #2a2e38;
+  border-radius: 28px;
+  padding: 36px;
+  margin-bottom: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.featured-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.featured-badge {
+  background: rgba(255, 77, 77, 0.15);
+  color: var(--accent-red);
+  border: 1px solid rgba(255, 77, 77, 0.3);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.featured-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 24px;
+  align-items: center;
+}
+.featured-main-img {
+  height: 420px;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--line);
+}
+.featured-main-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.featured-thumbs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.thumb-card {
+  height: 198px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  position: relative;
+}
+.thumb-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.thumb-label {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  color: #e2e8f0;
+}
+.featured-details {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 30px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+.featured-details h3 { font-size: 28px; margin: 0 0 12px; letter-spacing: -.03em; }
+.featured-details p { color: var(--muted); line-height: 1.6; font-size: 15px; margin: 0 0 16px; }
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.feature-item {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+.feature-item strong { display: block; font-size: 13px; color: var(--accent); margin-bottom: 2px; }
+.feature-item span { font-size: 12px; color: var(--muted); }
+
+/* Standard Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.project-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  overflow: hidden;
+  transition: transform .3s ease, border-color .3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: #3a3e46;
+}
+.project-visual {
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+  background: #16181d;
+}
+.project-visual img, .project-visual video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s ease;
+}
+.project-card:hover .project-visual img,
+.project-card:hover .project-visual video {
+  transform: scale(1.04);
+}
+.project-badge {
+  position: absolute;
+  z-index: 2;
+  top: 18px; left: 18px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.cardbody { padding: 26px; display: flex; flex-direction: column; flex-grow: 1; }
+.cardbody h3 { font-size: 22px; margin: 0 0 10px; letter-spacing: -.03em; }
+.cardbody p { color: var(--muted); margin: 0; font-size: 14px; line-height: 1.6; }
+.meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+.meta span { font-size: 11px; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; color: #c6c8cc; background: rgba(255,255,255,0.02); }
+
+/* Visual Showcase Grid */
+.media-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr .8fr;
+  grid-auto-rows: 250px;
+  gap: 16px;
+}
+.media-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #111;
+  border: 1px solid var(--line);
+}
+.media-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s ease;
+}
+.media-tile:hover img { transform: scale(1.05); }
+.media-main { grid-row: span 2; }
+.media-wide { grid-column: span 2; }
+.media-caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 24px 18px 16px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.88));
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 13px;
+  z-index: 2;
+}
+.media-caption b { color: var(--accent); font-size: 12px; }
+
+/* Resume Section Styling */
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.resume-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 32px;
+}
+.resume-card h3 {
+  font-size: 22px;
+  margin: 0 0 24px;
+  letter-spacing: -.03em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+}
+.timeline-item {
+  position: relative;
+  padding-left: 20px;
+  border-left: 2px solid var(--line);
+  margin-bottom: 28px;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.timeline-item h4 { margin: 0 0 4px; font-size: 18px; }
+.timeline-item .role-meta { color: var(--accent); font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.timeline-item p { color: var(--muted); font-size: 14px; margin: 0; line-height: 1.6; }
+
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.skill-block h4 { margin: 0 0 6px; font-size: 15px; color: #fff; }
+.skill-block p { margin: 0; font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+.badges-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.badge-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #d1d5db;
+}
+
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+}
+.lang-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+}
+.lang-card strong { display: block; font-size: 14px; }
+.lang-card small { color: var(--muted); font-size: 12px; }
+
+/* About Section */
+.about { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; }
+.about h2 { font-size: 52px; line-height: 1; letter-spacing: -.06em; margin: 0; }
+.about p { color: var(--muted); font-size: 17px; line-height: 1.7; }
+
+/* Process Section */
+.process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.step { padding: 26px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); }
+.num { color: var(--accent); font-size: 13px; font-weight: 800; }
+.step h3 { margin: 24px 0 8px; font-size: 20px; }
+.step p { color: var(--muted); font-size: 14px; margin: 0; }
+
+/* Contact CTA */
+.cta {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 80px 60px;
+  background: radial-gradient(circle at 90% 10%, rgba(216, 255, 85, 0.12), transparent 40%), var(--panel);
+}
+.cta h2 { font-size: clamp(40px, 6vw, 72px); line-height: .95; letter-spacing: -.06em; max-width: 750px; margin: 0 0 22px; }
+.cta p { color: var(--muted); max-width: 580px; font-size: 18px; margin-bottom: 30px; }
+
+/* Footer */
+footer {
+  padding: 40px 0;
+  color: #777b82;
+  border-top: 1px solid var(--line);
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; padding-top: 110px; }
+  .hero-art { min-height: 380px; }
+  .featured-grid, .featured-details, .projects-grid, .resume-grid, .about { grid-template-columns: 1fr; }
+  .featured-main-img { height: 300px; }
+  .media-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
+  .media-main { grid-row: span 1; grid-column: span 2; }
+  .media-wide { grid-column: span 2; }
+  .process { grid-template-columns: 1fr 1fr; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .cta { padding: 50px 30px; }
+}
+@media (max-width: 560px) {
+  .wrap { padding: 0 20px; }
+  .links { display: none; }
+  .featured-thumbs, .feature-list, .media-grid, .process, .languages-grid { grid-template-columns: 1fr; }
+  .media-main, .media-wide { grid-column: span 1; }
+  footer { flex-direction: column; gap: 10px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav">
+    <a class="logo" href="#">MAYUR<span>.</span></a>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#showcase">Showcase</a>
+      <a href="#resume">Resume</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="btn-nav">Contact Me</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Section -->
+  <section class="wrap hero">
+    <div>
+      <div class="eyebrow">3D Environment Artist · Unreal Engine</div>
+      <h1>REAL WORLDS.<br><em>BUILT DIGITALLY.</em></h1>
+      <p>As an Unreal Engine Artist with industry experience at AjnaLens, I combine creative world-building, VR interaction mechanics, Blueprint scripting, and AWS cloud tools to craft immersive safety training simulations and arch-viz environments.</p>
+      <div class="actions">
+        <a class="btn primary" href="#work">View Projects ↓</a>
+        <a class="btn" href="#resume">View Resume</a>
+      </div>
+    </div>
+    
+    <div class="hero-art" aria-label="Unreal Engine Environment Preview">
+      <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=90">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-modern-apartment-architecture-walkthrough-41525-large.mp4" type="video/mp4">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=90" alt="Modern Environments">
+      </video>
+      <div class="overlay">
+        <strong>Dynamic Environments & Simulations</strong>
+        <small>Real-Time Walkthroughs · Unreal Engine 5 · Interactive Blueprints</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Projects Section -->
+  <section id="work" class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Featured Work</div>
+        <h2>Unreal Engine Projects</h2>
+      </div>
+      <p>A comprehensive collection of interactive VR simulations, digital twins, procedural systems, and cinematic 3D environments built from scratch.</p>
+    </div>
+
+    <!-- FLAGSHIP PROJECT: Fire Extinguisher Training Program VR -->
+    <div id="vr-project" class="featured-project">
+      <div class="featured-header">
+        <div>
+          <span class="featured-badge">🔥 VR SIMULATION • BUILT FROM SCRATCH</span>
+          <h2 style="font-size: 32px; margin: 10px 0 0; letter-spacing: -.04em;">Fire Extinguisher Training Simulation</h2>
+        </div>
+        <div style="font-size: 13px; color: var(--muted);">Engine: <strong>Unreal Engine 5</strong></div>
+      </div>
+
+      <div class="featured-grid">
+        <div class="featured-main-img">
+          <img src="Screenshot 2026-08-10 193624.png" alt="VR Training Room Environment created in Unreal Engine 5" onerror="this.src='C:\Users\eixil\OneDrive\Pictures\Screenshots">
+          <div class="thumb-label"><b>Main VR Training Facility</b> — Custom 3D layout with overhead fire suppression pipes, safety posters & seating</div>
+        </div>
+        
+      <div class="featured-details">
+        <div>
+          <h3>Project Overview</h3>
+          <p>Designed and built entirely from scratch in Unreal Engine 5, this VR simulation program trains users on proper fire extinguisher operation (P.A.S.S. method) inside an industrial facility classroom environment.</p>
+          <p>The virtual room features custom-modeled overhead fire suppression pipes, safety chart wall mountings, office seating layout, glass partitions, and interactive fire safety equipment designed for realistic compliance training.</p>
+        </div>
+        <div>
+          <h3>Technical Implementation</h3>
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>VR Hand Mechanics</strong>
+              <span>Grasp, pin pull, nozzle aim, and trigger squeeze via UE5 Controllers</span>
+            </div>
+            <div class="feature-item">
+              <strong>Niagara VFX Particles</strong>
+              <span>Real-time foam/CO2 discharge and dynamic fire suppression</span>
+            </div>
+            <div class="feature-item">
+              <strong>Environment Design</strong>
+              <span>Custom hard-surface piping, lighting setup, and classroom dressing</span>
+            </div>
+            <div class="feature-item">
+              <strong>Blueprint Logic</strong>
+              <span>Step-by-step P.A.S.S. evaluation system and safety score tracking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Projects Grid (Remaining 9 Projects) -->
+    <div class="projects-grid">
+      
+      <!-- Project 1 -->
+      <article class="project-card">
+        <div class="project-visual">
+          <span class="project-badge">Arch-Viz</span>
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85" alt="Virtual Office Space">
+        </div>
+        <div class="cardbody">
+          <h3>Virtual Office Creation</h3>
+          <p>A highly detailed, real-time virtual office environment built in Unreal Engine, optimized for architectural visualization and interactive lighting walkthroughs.</p>
+          <div class="meta">
+            <span>Interior Design</span>
+            <span>Real-time Lighting</span>
+            <span>Walkthrough</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card">
+        <div class="project-visual">
+          <span class="project-badge">Sci-Fi Environment</span>
+          <img src="Screenshot 2026-08-10 193608.png" alt="Astronaut on Moon Surface">
+        </div>
+        <div class="cardbody">
+          <h3>Astronaut & Moon Surface</h3>
+          <p>Extraterrestrial environment design featuring a realistic lunar surface, complete with astronaut character models, dynamic harsh lighting, and footprint physics.</p>
+          <div class="meta">
+            <span>Terrain Sculpting</span>
+            <span>Character Rigging</span>
+            <span>Atmospherics</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card">
+        <div class="project-visual">
+          <span class="project-badge">Vehicle Mechanics</span>
+          <img src="helicoptor movement.png" alt="Helicopter Cockpit">
+        </div>
+        <div class="cardbody">
+          <h3>Blueprint Helicopter Control</h3>
+          <p>Advanced vehicle mechanics programmed entirely using Unreal Engine Blueprints, featuring realistic helicopter flight controls, rotor physics, and aerodynamics.</p>
+          <div class="meta">
+            <span>Blueprints</span>
+            <span>Flight Physics</span>
+            <span>Input Mapping</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card">
+        <div class="project-visual">
+          <span class="project-badge">XR Training</span>
+          <img src="vehical xr panel.png" alt="Automotive Components">
+        </div>
+        <div class="cardbody">
+          <h3>Vehicle Repair XR Panel</h3>
+          <p>Extended Reality (XR) interface designed for automotive maintenance training, allowing users to interact with floating repair panels and detach virtual vehicle components.</p>
+          <div class="meta">
+            <span>XR UI/UX</span>
+            <span>Interactive Assembly</span>
+            <span>3D Widgets</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 5 -->
+      <article class="project-card">
+        <div class="project-visual">
+          <span class="project-badge">Digital Twin</span>
+          <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=1200&q=85" alt="Agricultural Fields">
+        </div>
+        <div class="cardbody">
+          <h3>Agriculture Digital Twin</h3>
+          <p>A real-time, data-driven digital twin of an agricultural environment, simulating crop growth cycles, terrain topologies, and farming logistics.</p>
+          <div class="meta">
+            <span>Data Visualization</span>
+            <span>Foliage Systems</span>
+            <span>Simulation</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 6 -->
+      <article class="project-card">
+        <div class="project-visual">
+          <span class="project-badge">Procedural Generation</span>
+          <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1200&q=85" alt="City Traffic Intersection">
+        </div>
+        <div class="cardbody">
+          <h3>AI Traffic & Procedural City</h3>
+          <p>Dynamic urban environment utilizing Procedural Content Generation (PCG) for buildings, seamlessly populated with AI-driven crowd behavior and vehicle traffic systems.</p>
+          <div class="meta">
+            <span>PCG Framework</span>
+            <span>AI Behavior Trees</span>
+            <span>Traffic Splines</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 7 -->
+      <article class="project-card">
+        <div class="project-visual">
+          <span class="project-badge">Industrial Simulation</span>
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=85" alt="Warehouse Logistics">
+        </div>
+        <div class="cardbody">
+          <h3>Virtual Warehouse Logistics</h3>
+          <p>Industrial simulation showcasing an end-to-end supply chain. Features interactive stations for product packing, manufacturing processes, and dispatching.</p>
+          <div class="meta">
+            <span>Logistics Simulation</span>
+            <span>Conveyor Physics</span>
+            <span>Automation Logic</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 8 -->
+      <article class="project-card">
+        <div class="project-visual">
+          <span class="project-badge">Physics & Logic</span>
+          <img src="Militry Movment Control1.png" alt="Military Logistics">
+        </div>
+        <div class="cardbody">
+          <h3>Military Vehicle & Ship Movement</h3>
+          <p>Complex movement logic and physics integration for heavy military assets. Built via Blueprints to accurately simulate naval ship buoyancy and tactical truck terrain traversal.</p>
+          <div class="meta">
+            <span>Buoyancy Physics</span>
+            <span>Vehicle Blueprints</span>
+            <span>Heavy Machinery</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 9 -->
+      <article class="project-card" style="grid-column: span 2;">
+        <div class="project-visual" style="height: 400px;">
+          <span class="project-badge">Cinematic Environment</span>
+          <img src="Buddha Enviroment creation.png" alt="Serene Buddha Statue Environment">
+        </div>
+        <div class="cardbody">
+          <h3>Buddha Statue Serene Environment</h3>
+          <p>A tranquil and highly cinematic 3D environment centered around a meticulously detailed Buddha statue. The project focuses heavily on atmospheric lighting, dense natural foliage placement, volumetric fog, and visual composition to evoke a sense of peace and scale.</p>
+          <div class="meta">
+            <span>Cinematic Lighting</span>
+            <span>Volumetrics</span>
+            <span>Foliage Placement</span>
+            <span>Composition</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Media Showcase Section -->
+  <section id="showcase" class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Visual Gallery</div>
+        <h2>Real-Time Detail Showcase</h2>
+      </div>
+      <p>A closer look at texture quality, realistic lighting setups, and artistic composition across varied projects.</p>
+    </div>
+
+    <div class="media-grid">
+      <div class="media-tile media-main">
+        <img src="Buddha Enviroment creation.png" alt="Buddha Environment Detail">
+        <div class="media-caption"><b>01</b><span>Buddha Environment Volumetrics</span></div>
+      </div>
+      <div class="media-tile">
+        <img src="Screenshot 2026-08-10 193608.png" alt="Lunar Surface Material">
+        <div class="media-caption"><b>02</b><span>Lunar Surface Texture & Lighting</span></div>
+      </div>
+      <div class="media-tile">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=90" alt="Virtual Office Reflection">
+        <div class="media-caption"><b>03</b><span>Office Global Illumination</span></div>
+      </div>
+      <div class="media-tile media-wide">
+        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1600&q=90" alt="Procedural City Scale">
+        <div class="media-caption"><b>04</b><span>Procedural City Scale & Traffic Splines</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section id="resume" class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Professional Profile</div>
+        <h2>Resume & Qualifications</h2>
+      </div>
+      <p>A summary of my professional experience, core technical capabilities, cloud certification, and education.</p>
+    </div>
+
+    <div class="resume-grid">
+      <!-- Left Column: Experience & Education -->
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div class="resume-card">
+          <h3>💼 Work Experience</h3>
+          <div class="timeline-item">
+            <h4>Unreal Engine Artist</h4>
+            <div class="role-meta">AjnaLens · 6 Months Experience</div>
+            <p>As an aspiring Unreal Engine Artist with a strong passion for creating immersive gaming experiences, I bring a unique blend of talent, creativity, and a hunger for continuous growth. With 6 months of experience honing my craft at AjnaLens, I have developed a solid foundation in Unreal Engine and a deep understanding of the art of game development.</p>
+          </div>
+        </div>
+
+        <div class="resume-card">
+          <h3>🎓 Education</h3>
+          <div class="timeline-item">
+            <h4>Bachelor's Degree in BA Eng Hons.</h4>
+            <div class="role-meta">Himalayan University, Itanagar, AP · Graduated 2018</div>
+            <p>Studied English literature, critical analysis, communication, research, and creative writing, developing strong skills in interpretation, storytelling, written communication, and analytical thinking.</p>
+          </div>
+        </div>
+
+        <div class="resume-card">
+          <h3>🗣️ Languages</h3>
+          <div class="languages-grid">
+            <div class="lang-card">
+              <strong>English</strong>
+              <small>Proficient</small>
+            </div>
+            <div class="lang-card">
+              <strong>Hindi</strong>
+              <small>Native</small>
+            </div>
+            <div class="lang-card">
+              <strong>Marathi</strong>
+              <small>Native</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Skills & Tech -->
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div class="resume-card">
+          <h3>🛠️ Unreal Engine & 3D Skills</h3>
+          <div class="skills-list">
+            <div class="skill-block">
+              <h4>Unreal Engine 5 & Blueprint Specialist</h4>
+              <p>Expertise in visual scripting through Blueprints for VR gameplay mechanics, safety simulation logic, interactive UI, vehicle physics, and AI systems.</p>
+            </div>
+            <div class="skill-block">
+              <h4>Procedural & Real-Time Environments</h4>
+              <p>In-depth knowledge of PCG (Procedural Content Generation), digital twin architecture, static/dynamic lighting, and global illumination (Lumen).</p>
+            </div>
+            <div class="skill-block">
+              <h4>3D Asset Modeling, Texturing & Optimization</h4>
+              <p>Proficient in modeling high-quality assets, PBR texturing workflows, and building performance-friendly elements for XR panels and logistics simulations.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="resume-card">
+          <h3>☁️ Tech, AWS & Programming</h3>
+          <div class="skills-list">
+            <div class="skill-block">
+              <h4>Master Certificate in AWS</h4>
+              <p>Deployment and management of AWS applications (EC2, S3, RDS, IAM), serverless computing (Lambda), infrastructure as code (CloudFormation), and AWS networking & security.</p>
+            </div>
+            <div class="skill-block">
+              <h4>Programming & Web Technologies</h4>
+              <div class="badges-flex">
+                <span class="badge-item">C++ (Basic Syntax)</span>
+                <span class="badge-item">SQL (Databases)</span>
+                <span class="badge-item">HTML5</span>
+                <span class="badge-item">CSS3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="wrap">
+    <div class="about">
+      <div>
+        <div class="eyebrow">About Me</div>
+        <h2>I build spaces people can step into.</h2>
+      </div>
+      <div>
+        <p>My work sits at the intersection of 3D environment design, real-time VR simulations, and interactive technology. With 6 months of focused experience at AjnaLens, I specialize in building projects from scratch—ranging from technical safety training programs and vehicle physics to procedural cities and digital twins.</p>
+        <p>By blending artistic intuition with technical execution—including Unreal Engine Blueprints, XR Interactions, AI Systems, and AWS cloud management—I create real-time spaces that deliver both immersion and function.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process" class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Workflow</div>
+        <h2>From Concept to Real-Time</h2>
+      </div>
+    </div>
+    <div class="process">
+      <div class="step">
+        <div class="num">01</div>
+        <h3>Understand</h3>
+        <p>Review architectural plans, safety compliance rules, logic requirements, and performance targets.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h3>Blockout</h3>
+        <p>Establish scale, modularity, initial VR bounds, or baseline Blueprint logic in UE5.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h3>Build & Texture</h3>
+        <p>Apply PBR materials, set up Niagara particles, configure dynamic lighting, and build out AI/vehicle mechanics.</p>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <h3>Optimize & Deliver</h3>
+        <p>Fine-tune framerates, polish interaction logic in Blueprint, and finalize cinematic or walkthrough builds.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA -->
+  <section id="contact" class="wrap">
+    <div class="cta">
+      <div class="eyebrow">Let's Connect</div>
+      <h2>Have a space, simulation, or system worth building?</h2>
+      <p>Whether you need a VR safety training simulation, digital twin environment, or complex Blueprint logic, let's collaborate.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:eixil.mayur@gmail.com">Email Me Direct</a>
+        <a class="btn" href="https://www.linkedin.com/in/mayur-kamble-15b86b189/" target="_blank" rel="noopener">LinkedIn Profile</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div>© 2026 Mayur Kamble — 3D Environment Artist & VR Simulation Specialist</div>
+  <div>eixil.mayur@gmail.com · Unreal Engine 5 Certified</div>
+</footer>
+
+</body>
+</html>
